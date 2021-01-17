@@ -2,8 +2,8 @@ package com.ac.dataloader.controller;
 
 import com.ac.dataloader.entity.orm.Job;
 import com.ac.dataloader.services.JobService;
+import com.ac.dataloader.util.Pair;
 import com.fasterxml.jackson.databind.JsonNode;
-import javafx.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.http.MediaType;

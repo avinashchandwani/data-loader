@@ -6,10 +6,8 @@ import com.ac.dataloader.dao.OrdersRepository;
 import com.ac.dataloader.entity.orm.Job;
 import com.ac.dataloader.entity.orm.Order;
 import com.ac.dataloader.entity.orm.OrderDetails;
-import javafx.util.Pair;
+import com.ac.dataloader.util.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +15,6 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
@@ -38,12 +35,12 @@ public class DataLoaderMvcConfig {
 
     @Bean
     public void objectHandlerMapping() {
-        properties.put("jobs", getPair(Job.class,  jobRepository));
-        properties.put("orders", getPair(Order.class,  ordersRepository));
-        properties.put("orderdetails", getPair(OrderDetails.class,  orderDetailsRepository));
+        properties.put("jobs", getPair(Job.class, jobRepository));
+        properties.put("orders", getPair(Order.class, ordersRepository));
+        properties.put("orderdetails", getPair(OrderDetails.class, orderDetailsRepository));
     }
 
-    private Pair getPair(Class object, CrudRepository value){
+    private Pair getPair(Class object, CrudRepository value) {
         return new Pair<Class, CrudRepository>(object, value);
     }
 
