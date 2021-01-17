@@ -47,11 +47,11 @@ public class DataLoaderMvcConfig {
         return new Pair<Class, CrudRepository>(object, value);
     }
 
-    @Bean(value = "datasource")
-    @ConfigurationProperties("security.datasource")
+    /*@Bsean(value = "datasource")
+    @ConfigurationProperties("datasource")
     public DataSource dataSource() {
         return DataSourceBuilder.create().build();
-    }
+    }*/
 
     @Bean
     public TaskExecutor taskExecutor() {

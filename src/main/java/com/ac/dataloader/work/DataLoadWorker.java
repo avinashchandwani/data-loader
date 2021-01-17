@@ -3,13 +3,11 @@ package com.ac.dataloader.work;
 import com.ac.dataloader.dao.JobRepository;
 import com.ac.dataloader.entity.orm.Job;
 import com.ac.dataloader.entity.orm.JobStatus;
-import com.ac.dataloader.entity.orm.Order;
-import com.ac.dataloader.util.JacksonUtil;
+import com.ac.dataloader.util.JsonUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -39,8 +37,7 @@ public class DataLoadWorker implements Runnable {
         job.setTotalRecords(records.size());
         jobRepository.save(job);
         try {
-            List convertedObjects = JacksonUtil.convertJsonNodeToObject(ormObject, records);
-            System.out.println("List is "+convertedObjects);
+            List convertedObjects = JsonUtil.convertJsonNodeToObject(ormObject, records);
             objectRepository.saveAll(convertedObjects);
             job.setJobStatus(JobStatus.COMPLETED);
         } catch (JsonProcessingException e) {

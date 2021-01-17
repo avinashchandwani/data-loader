@@ -30,6 +30,12 @@ public class DataLoaderController {
         return jobService.getAllJobs();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping(value = "/", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public String testApi() {
+        return "OK";
+    }
+
     @GetMapping(value = "/bulk/{id}/status", produces = {MediaType.APPLICATION_JSON_VALUE})
     public Optional<Job> getBatchJobStatus(@PathVariable(name = "id") int jobId) throws Exception {
         Optional<Job> job = jobService.getJobStatus(jobId);

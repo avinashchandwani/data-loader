@@ -8,7 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JacksonUtil {
+public class JsonUtil {
 
     public static List convertJsonNodeToObject(Class ormClass, List<JsonNode> records) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
